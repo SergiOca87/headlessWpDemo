@@ -10,20 +10,51 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "",
+        url: "https://demo.inmotionrealestate.com/headless2023/graphql",
       },
     },
     "gatsby-plugin-styled-components",
+    // {
+    //   resolve: "gatsby-plugin-google-analytics",
+    //   options: {
+    //     trackingId: "",
+    //   },
+    // },
+
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-omni-font-loader`,
       options: {
-        trackingId: "",
+        enableListener: true,
+        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        web: [
+          {
+            name: `Poppins`,
+            file: `https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap`,
+          },
+        ],
       },
     },
-    "gatsby-plugin-sharp",
+
+    {
+      resolve: "gatsby-plugin-sharp",
+      defaults: {
+        formats: [`auto`],
+        placeholder: `BLURRED`,
+        quality: 90,
+      }
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-offline",
+    // {
+    //   resolve: `gatsby-plugin-scroll-reveal`,
+    //   options: {
+    //     threshold: 0, // Percentage of an element's area that needs to be visible to launch animation
+    //     once: true, // Defines if animation needs to be launched once
+    //     enterEventName: 'sal:in', // Enter event name
+    //     exitEventName: 'sal:out', // Exit event name
+    //   }
+    // },
     {
       resolve: "gatsby-plugin-manifest",
       options: {
