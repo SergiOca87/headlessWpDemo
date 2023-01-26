@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Section from '../layout/Section';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'gatsby';
+import { Parallax } from 'react-scroll-parallax';
 
 const StyledOverviewIcons = styled.div`
     display: grid;
@@ -27,10 +28,45 @@ const StyledOverviewIcons = styled.div`
         align-items: center;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         margin-bottom: 3rem;
+        position: relative;
+
+        &:after {
+            content: "";
+            background-color: var(--secondary);
+            width: 0;
+            height: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all 300ms;
+        }
 
         svg {
             font-size: 6rem;
             opacity: .5;
+            transition: all 300ms;
+
+            path {
+                transition: all 300ms;
+            }
+        }
+
+        &:hover {
+
+            &:after {
+                width: 100%;
+            }
+
+            svg {
+                opacity: 1;
+                fill: var(--secondary);
+
+                path {
+
+                    stroke: var(--secondary);
+                }
+                
+            }
         }
     }
 `;
@@ -45,6 +81,7 @@ const StyledOverviewSection = styled.div`
         display: flex; 
         flex-direction: column; 
         justify-content: space-between;
+        padding-bottom: 4rem;
 
     }
 `
@@ -67,18 +104,22 @@ function OverviewSection({ title, text }) {
                     </Col>
                     <Col lg={6}>
                         <StyledOverviewIcons>
-                            <div className="overview-icon"><h3>Office</h3>
-                                <HiOutlineBuildingOffice2 />
-                            </div>
-                            <div className="overview-icon"><h3>Multifamily</h3>
-                                <BsHouseDoor />
-                            </div>
-                            <div className="overview-icon"><h3>Land</h3>
-                                <RiLandscapeLine />
-                            </div>
-                            <div className="overview-icon"><h3>Medical</h3>
-                                <MdOutlineMedicalServices />
-                            </div>
+                            <Parallax translateY={[-10, 20]}>
+                                <div className="overview-icon"><h3>Office</h3>
+                                    <HiOutlineBuildingOffice2 />
+                                </div>
+                                <div className="overview-icon"><h3>Multifamily</h3>
+                                    <BsHouseDoor />
+                                </div>
+                            </Parallax>
+                            <Parallax translateY={[10, -20]}>
+                                <div className="overview-icon"><h3>Land</h3>
+                                    <RiLandscapeLine />
+                                </div>
+                                <div className="overview-icon"><h3>Medical</h3>
+                                    <MdOutlineMedicalServices />
+                                </div>
+                            </Parallax>
                         </StyledOverviewIcons>
 
                     </Col>

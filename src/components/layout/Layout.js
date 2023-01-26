@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
        --primary: rgba(0, 28,60);
+       --secondary: rgb(185 156 94);
+       --tertiary: rgb(10 51 97);
     }
   
     html {

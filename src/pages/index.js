@@ -13,6 +13,7 @@ import PropertiesSlider from "../components/Slider";
 import Section from "../components/layout/Section";
 import Layout from "../components/layout/Layout";
 import OverviewSection from "../components/homepage/OverviewSection";
+import NewsGrid from "../components/NewsGrid";
 
 
 
@@ -49,6 +50,7 @@ const StyledHero = styled.section`
 		top: 0, left: 0;
 		width: 100%;
 		height: 100%;
+
 	}
 `
 
@@ -57,13 +59,36 @@ const StyledOverviewImages = styled.div`
 
 	.gatsby-image-wrapper {
 		width: 35rem;
-		height: 50rem;
+		height: 30rem;
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		background-color: #fff;
+		padding: 3px;
 		img {
-			
+			border-radius: 5px;
+			padding: 5px;
 	
 		}
-	
-	
+	}
+`;
+
+const StyledOverviewTextWrap = styled.div`
+	height: 100%;
+
+
+	.inner {
+		border: 1px solid #fff;
+		padding: 4rem;
+		height: 100%;
+		width: 100%;
+		max-width: 55rem;
+		margin-left: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		h2, p {
+			color: #fff;
+		}
 	}
 `;
 
@@ -74,9 +99,10 @@ const StyledOverviewImages = styled.div`
 
 const IndexPage = ({ data }) => {
 	const homepage = data.allWpPage.edges[0].node.HomepageFields;
+	const posts = data.allWpPost.edges;
 	const heroImage = getImage(homepage.introImage.localFile.childImageSharp.gastbyImageData);
 
-	console.log(homepage.introImage);
+	console.log('posts', posts);
 
 	return (
 		<Layout>
@@ -96,27 +122,45 @@ const IndexPage = ({ data }) => {
 
 				<OverviewSection title={homepage.overviewTitle} text={homepage.overviewText} />
 
-				<StyledOverviewImages>
-					<Parallax translateY={[-20, 35]}>
-						<GatsbyImage image={homepage.overviewImage.localFile
-							.childImageSharp.gatsbyImageData} alt="Overview Image" />
-					</Parallax>
-					<div
-						css={css`
-                        position: absolute;
-                        top: -2rem;
-                        right: 0;
-                    `}
-					>
-						<Parallax translateY={[20, -35]}>
+				<Section bg={true}>
+					<Container>
+						<Row>
+							<Col lg={6}>
+								<StyledOverviewImages>
+									<Parallax translateY={[-20, 35]}>
+										<GatsbyImage image={homepage.overviewImage.localFile
+											.childImageSharp.gatsbyImageData} alt="Overview Image" />
+									</Parallax>
+									<div
+										css={css`
+											position: absolute;
+											top: -2rem;
+											right: 0;
+										`}
+									>
+										<Parallax translateY={[20, -35]}>
+											<GatsbyImage image={homepage.overviewParallaxImage.localFile
+												.childImageSharp.gatsbyImageData} alt="Overview Image" />
+										</Parallax>
+									</div>
+								</StyledOverviewImages>
+							</Col>
+							<Col lg={6}>
+								<StyledOverviewTextWrap>
+									<div className="inner">
+										<div>
 
-							<GatsbyImage image={homepage.overviewParallaxImage.localFile
-								.childImageSharp.gatsbyImageData} alt="Overview Image" />
-
-
-						</Parallax>
-					</div>
-				</StyledOverviewImages>
+											<p>{homepage.propertiesText}</p>
+										</div>
+										<Link to="/properties" >
+											<Button>Learn More</Button>
+										</Link>
+									</div>
+								</StyledOverviewTextWrap>
+							</Col>
+						</Row>
+					</Container>
+				</Section>
 
 				<Section title={homepage.propertiesTitle} text={homepage.propertiesText} >
 					<PropertiesSlider collection={homepage.featuredProperties} />
@@ -129,10 +173,10 @@ const IndexPage = ({ data }) => {
 				</Section>
 
 				<Section title={homepage.newsTitle} text={homepage.newsText} >
-					{/* <NewsGrid items={}/> */}
+					<NewsGrid posts={posts} />
 				</Section>
 			</main>
-		</Layout>
+		</Layout >
 	)
 }
 
@@ -152,6 +196,7 @@ export const indexQuery = graphql`
           introText
 		  overviewTitle
           propertiesTitle
+		  propertiesText
 		  overviewText
           teamText
           teamTitle
@@ -200,6 +245,25 @@ export const indexQuery = graphql`
             }
           }
         }
+      }
+    }
+  }
+  allWpPost(limit: 3) {
+    edges {
+      node {
+        id
+        title
+		featuredImage {
+			node {
+				localFile {
+					childImageSharp {
+						gatsbyImageData(
+							layout: FULL_WIDTH, 
+						)
+					}
+				}
+			}
+		}
       }
     }
   }

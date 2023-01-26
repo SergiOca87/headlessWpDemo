@@ -1,18 +1,21 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledSection = styled.section`
-    padding: 6rem 0;
+    padding: 8rem 0;
 
     h2 {
         margin-bottom: 1.5rem;
     }
 `
 
-function Section({ title, text, children }) {
+function Section({ title, text, children, bg = false }) {
     return (
-        <StyledSection>
+        <StyledSection css={css`${bg
+            ? "background-color: var(--tertiary)"
+            : ""}
+        `} >
             <Container>
                 <h2>{title}</h2>
                 <p>{text}</p>
