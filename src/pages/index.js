@@ -105,7 +105,7 @@ const IndexPage = ({ data }) => {
 	console.log('posts', posts);
 
 	return (
-		<Layout>
+		<Layout homepage={true}>
 			<main>
 				<StyledHero>
 					<GatsbyImage image={homepage.introImage.localFile

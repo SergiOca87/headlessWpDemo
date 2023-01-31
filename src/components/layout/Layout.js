@@ -2,6 +2,7 @@ import React from "react"
 import { createGlobalStyle } from "styled-components"
 import "normalize.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./Header";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -47,12 +48,22 @@ const GlobalStyle = createGlobalStyle`
     .white {
         color: #fff;
     }
+
+    a {
+        text-decoration: none;
+        transition: color 300ms;
+    }
+
+    .container {
+        position: relative;
+    }
   
 `
-export default function Layout({ children }) {
+export default function Layout({ children, homepage = false }) {
     return (
         <React.Fragment>
             <GlobalStyle />
+            <Header homepage={homepage} />
             {children}
         </React.Fragment>
     )

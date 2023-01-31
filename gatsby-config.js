@@ -46,6 +46,14 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-offline",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/assets/images/',
+      },
+      __key: 'images',
+    },
     // {
     //   resolve: `gatsby-plugin-scroll-reveal`,
     //   options: {
@@ -55,18 +63,16 @@ module.exports = {
     //     exitEventName: 'sal:out', // Exit event name
     //   }
     // },
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/icon.png",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-manifest",
+
+    // },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "./src/images/",
+        path: `${__dirname}/src/assets/images/`,
       },
       __key: "images",
     },
