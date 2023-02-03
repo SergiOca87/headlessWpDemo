@@ -54,9 +54,8 @@ a {
     text-transform: uppercase;
     font-size: 1.6rem;
 
-
     &:hover {
-        color: var(--secondary);
+        color: var(--primary);
     }
 }
 `

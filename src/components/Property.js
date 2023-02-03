@@ -1,3 +1,4 @@
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import styled from "styled-components"
@@ -28,17 +29,11 @@ const StyledProperty = styled.div`
 function Property({ property }) {
 	return (
 		<StyledProperty>
-			{/* {web.webDesignItemImage
-                						?.localFile && (
-                							<GatsbyImage
-                								image={
-                									web.webDesignItemImage
-                										.localFile
-                										.childImageSharp
-                										.gatsbyImageData
-                								}
-                							/>
-                						)} */}n
+			<GatsbyImage
+				image={
+					property.featuredImage.node.localFile.childImageSharp.gatsbyImageData
+				}
+			/>
 			<div className="property-text-wrap">
 				<h3>
 					{property.title}
@@ -49,7 +44,9 @@ function Property({ property }) {
 
 			</div>
 		</StyledProperty>
+
 	)
 }
+
 
 export default Property

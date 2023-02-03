@@ -18,30 +18,29 @@ import NewsGrid from "../components/NewsGrid";
 
 
 const StyledHero = styled.section`
-	height: 60rem;
+	height: 75rem;
 	position: relative;
 	display: flex;
-	align-items: flex-end;
-
-	&:before {
-		content: "";
-		background-color: rgba(0, 28,60, .8);
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 5;
-	}
+	align-items: center;
 
 	.content {
 		position: relative;
-		margin-bottom: 8rem;
 		z-index: 10;
+		background-color: rgba(0, 28,60, .8);
+		padding: 4rem 3rem;
+		max-width: 60rem;
 
 		h1, p {
 			color: #fff;
+		}
 
+		h1 {
+			margin-bottom: 3rem;
+			font-size: 4rem;
+		}
+
+		p {
+			max-width: 40rem;
 		}
 	}
 
@@ -60,12 +59,12 @@ const StyledOverviewImages = styled.div`
 	.gatsby-image-wrapper {
 		width: 35rem;
 		height: 30rem;
-		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		// box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 		background-color: #fff;
-		padding: 3px;
+		padding: 1px;
+
 		img {
-			border-radius: 5px;
-			padding: 5px;
+			padding: 2px;
 	
 		}
 	}
@@ -74,9 +73,11 @@ const StyledOverviewImages = styled.div`
 const StyledOverviewTextWrap = styled.div`
 	height: 100%;
 
+	position: relative;
+	z-index: 10;
 
 	.inner {
-		border: 1px solid #fff;
+		border: 2px solid #fff;
 		padding: 4rem;
 		height: 100%;
 		width: 100%;
@@ -85,6 +86,7 @@ const StyledOverviewTextWrap = styled.div`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		background-color: var(--primary);
 
 		h2, p {
 			color: #fff;
@@ -92,17 +94,11 @@ const StyledOverviewTextWrap = styled.div`
 	}
 `;
 
-
-
 //TODO: https://en.99designs.es/blog/creative-inspiration/real-estate-web-designs/
-
-
 const IndexPage = ({ data }) => {
 	const homepage = data.allWpPage.edges[0].node.HomepageFields;
 	const posts = data.allWpPost.edges;
 	const heroImage = getImage(homepage.introImage.localFile.childImageSharp.gastbyImageData);
-
-	console.log('posts', posts);
 
 	return (
 		<Layout homepage={true}>
@@ -207,6 +203,7 @@ export const indexQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   layout: FULL_WIDTH, 
+				  quality: 100
 				)
               }
             }
@@ -234,6 +231,17 @@ export const indexQuery = graphql`
               id
               link
               title
+				featuredImage {
+					node {
+						localFile {
+							childImageSharp {
+								gatsbyImageData(
+									layout: FULL_WIDTH, 
+								)
+							}
+						}
+					}
+				}
             }
           }
           featuredNews {

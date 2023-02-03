@@ -1,9 +1,12 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
+import SecondaryTitle from './SecondaryTitle'
 
 const StyledSection = styled.section`
     padding: 8rem 0;
+    overflow: hidden;
+    position: relative;
 
     h2 {
         margin-bottom: 1.5rem;
@@ -17,7 +20,7 @@ function Section({ title, text, children, bg = false }) {
             : ""}
         `} >
             <Container>
-                <h2>{title}</h2>
+                <SecondaryTitle title={title} />
                 <p>{text}</p>
                 {children}
             </Container>
