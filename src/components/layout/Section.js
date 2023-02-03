@@ -8,23 +8,42 @@ const StyledSection = styled.section`
     overflow: hidden;
     position: relative;
 
-    h2 {
-        margin-bottom: 1.5rem;
+    .titles-wrap {
+        max-width: 75rem;
+       
+        p {
+            margin-bottom: 5rem;
+        }
+
+        &.text-center {
+            text-align: center;
+            margin: 0 auto;
+
+            h2 {
+
+                &:after {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
     }
 `
 
-function Section({ title, text, children, bg = false }) {
+function Section({ title, text, children, background = false, centered = false }) {
     return (
-        <StyledSection css={css`${bg
-            ? "background-color: var(--tertiary)"
+        <StyledSection css={css`${background
+            ? `background-color: ${background}`
             : ""}
         `} >
             <Container>
-                <SecondaryTitle title={title} />
-                <p>{text}</p>
+                <div className={`titles-wrap ${centered && 'text-center'}`}>
+                    {title && <SecondaryTitle title={title} />}
+                    {text && <p>{text}</p>}
+                </div>
                 {children}
             </Container>
-        </StyledSection>
+        </StyledSection >
     )
 }
 

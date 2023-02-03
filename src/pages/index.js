@@ -14,8 +14,7 @@ import Section from "../components/layout/Section";
 import Layout from "../components/layout/Layout";
 import OverviewSection from "../components/homepage/OverviewSection";
 import NewsGrid from "../components/NewsGrid";
-
-
+import SecondaryTitle from "../components/layout/SecondaryTitle";
 
 const StyledHero = styled.section`
 	height: 75rem;
@@ -94,6 +93,40 @@ const StyledOverviewTextWrap = styled.div`
 	}
 `;
 
+const StyledTeamSection = styled.div`
+	section {
+		min-height: 40rem;
+		height: 100%;
+		position: relative;
+		padding: 4rem 0;
+
+		&:before {
+			content: "";
+			background-color: rgba(0, 28,60, .5);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+	}
+
+	.gatsby-image-wrapper {
+		img {
+			filter: grayscale(1);
+			object-position: 50% 70%;
+		}
+	}
+
+	.content {
+
+		p {
+			margin-bottom: 3rem;
+		}
+	}
+`;
+
 //TODO: https://en.99designs.es/blog/creative-inspiration/real-estate-web-designs/
 const IndexPage = ({ data }) => {
 	const homepage = data.allWpPage.edges[0].node.HomepageFields;
@@ -118,7 +151,11 @@ const IndexPage = ({ data }) => {
 
 				<OverviewSection title={homepage.overviewTitle} text={homepage.overviewText} />
 
-				<Section bg={true}>
+				<Section title={homepage.propertiesTitle} text={homepage.propertiesText} centered={true} background={'#f5f5f5'}>
+					<PropertiesSlider collection={homepage.featuredProperties} />
+				</Section>
+
+				<Section background={'var(--tertiary)'}>
 					<Container>
 						<Row>
 							<Col lg={6}>
@@ -158,19 +195,29 @@ const IndexPage = ({ data }) => {
 					</Container>
 				</Section>
 
-				<Section title={homepage.propertiesTitle} text={homepage.propertiesText} >
-					<PropertiesSlider collection={homepage.featuredProperties} />
-				</Section>
-
-				<Section title={homepage.teamTitle} text={homepage.teamText} >
-					<Link to="/team" >
-						<Button>Meet The Team</Button>
-					</Link>
-				</Section>
-
 				<Section title={homepage.newsTitle} text={homepage.newsText} >
 					<NewsGrid posts={posts} />
 				</Section>
+
+				<StyledTeamSection>
+					<StyledHero>
+						<GatsbyImage image={homepage.teamImage.localFile
+							.childImageSharp.gatsbyImageData} alt={homepage.introTitle} loading={'eager'} />
+						<Container>
+							<Row>
+								<div className="content">
+									<SecondaryTitle title={homepage.teamTitle} color={'#fff'} />
+									<p>{homepage.teamText}</p>
+									<Link to="/team" >
+										<Button>Meet The Team</Button>
+									</Link>
+								</div>
+							</Row>
+						</Container>
+					</StyledHero>
+				</StyledTeamSection>
+
+
 			</main>
 		</Layout >
 	)
@@ -194,8 +241,8 @@ export const indexQuery = graphql`
           propertiesTitle
 		  propertiesText
 		  overviewText
+		  teamTitle
           teamText
-          teamTitle
           newsTitle
           newsText
           introImage {
@@ -242,6 +289,15 @@ export const indexQuery = graphql`
 						}
 					}
 				}
+            }
+          }
+		  teamImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: FULL_WIDTH, 
+				)
+              }
             }
           }
           featuredNews {

@@ -11,7 +11,6 @@ const Team = ({ data }) => {
     return (
         <>
             <PageHeader title={team.pageTitle} subtitle={team.pageSubtitle} />
-
             <Section>
                 {posts.map((post) => (
                     <TeamItem item={post} />
@@ -35,7 +34,6 @@ export const teamQuery = graphql`
             }
         }
     }
-
     allWpTeam {
         edges {
             node {

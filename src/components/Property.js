@@ -20,6 +20,15 @@ const StyledProperty = styled.div`
 		}
 	}
 
+	.gatsby-image-wrapper {
+		height: 40rem;
+
+		img {
+			height: 100%;
+			width: 100%;object-fit: cover;
+		}
+	}
+
 	button {
 		opacity: 0;
 		transition: opacity 300ms;
@@ -39,8 +48,6 @@ function Property({ property }) {
 					{property.title}
 				</h3>
 
-				<Button variant="primary">View Property
-				</Button>
 
 			</div>
 		</StyledProperty>
