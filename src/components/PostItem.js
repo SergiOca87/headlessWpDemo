@@ -1,8 +1,9 @@
+import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react'
 import styled from 'styled-components';
 
-const StyledTeamItem = styled.div`
+const StyledPostItem = styled.div`
     .image-wrap {
         height: 20rem;
         overflow: hidden;
@@ -44,7 +45,7 @@ const StyledTeamItem = styled.div`
             margin-bottom: 3rem;
         }
 
-    
+      
 
         a {
             text-transform: uppercase;
@@ -58,21 +59,22 @@ const StyledTeamItem = styled.div`
             }
         }
     }
-`;
+`
 
-function TeamItem({ item }) {
+function PostItem({ post }) {
+    console.log('the post', post)
     return (
-        <>
-            <StyledTeamItem>
-                {item.node.featuredImage && <div className="image-wrap"><GatsbyImage image={item.node.featuredImage.node.localFile
-                    .childImageSharp.gatsbyImageData} alt={item.node.title} /></div>}
-                <div className="post-details">
-                    <h3>{item.node.title}</h3>
-                    {item.node.jobTitle && <p>{item.node.jobTitle}</p>}
-                </div>
-            </StyledTeamItem>
-        </>
+        <StyledPostItem>
+            <div className="image-wrap">
+                <GatsbyImage image={post.node.featuredImage.node.localFile
+                    .childImageSharp.gatsbyImageData} alt={post.node.title} />
+            </div>
+            <div className="post-details">
+                <h3>{post.node.title}</h3>
+                <Link to="/">Read More</Link>
+            </div>
+        </StyledPostItem>
     )
 }
 
-export default TeamItem
+export default PostItem

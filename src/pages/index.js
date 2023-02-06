@@ -15,6 +15,7 @@ import Layout from "../components/layout/Layout";
 import OverviewSection from "../components/homepage/OverviewSection";
 import NewsGrid from "../components/NewsGrid";
 import SecondaryTitle from "../components/layout/SecondaryTitle";
+import PostItem from "../components/PostItem";
 
 const StyledHero = styled.section`
 	height: 75rem;
@@ -196,7 +197,17 @@ const IndexPage = ({ data }) => {
 				</Section>
 
 				<Section title={homepage.newsTitle} text={homepage.newsText} >
-					<NewsGrid posts={posts} />
+					<Row>
+						{console.log(posts)}
+						{
+
+							posts.length && posts.map((post) => (
+								<Col lg={4} md={6}>
+									<PostItem post={{ post }} />
+								</Col>
+							))
+						}
+					</Row>
 				</Section>
 
 				<StyledTeamSection>
@@ -216,8 +227,6 @@ const IndexPage = ({ data }) => {
 						</Container>
 					</StyledHero>
 				</StyledTeamSection>
-
-
 			</main>
 		</Layout >
 	)
@@ -306,6 +315,17 @@ export const indexQuery = graphql`
               link
               title
               excerpt
+				featuredImage {
+					node {
+						localFile {
+							childImageSharp {
+								gatsbyImageData(
+									layout: FULL_WIDTH, 
+								)
+							}
+						}
+					}
+				}
             }
           }
         }
