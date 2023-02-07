@@ -13,7 +13,6 @@ import PropertiesSlider from "../components/Slider";
 import Section from "../components/layout/Section";
 import Layout from "../components/layout/Layout";
 import OverviewSection from "../components/homepage/OverviewSection";
-import NewsGrid from "../components/NewsGrid";
 import SecondaryTitle from "../components/layout/SecondaryTitle";
 import PostItem from "../components/PostItem";
 
@@ -198,9 +197,7 @@ const IndexPage = ({ data }) => {
 
 				<Section title={homepage.newsTitle} text={homepage.newsText} >
 					<Row>
-						{console.log(posts)}
 						{
-
 							posts.length && posts.map((post) => (
 								<Col lg={4} md={6}>
 									<PostItem post={{ post }} />

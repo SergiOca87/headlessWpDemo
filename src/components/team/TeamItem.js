@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledTeamItem = styled.div`
     .image-wrap {
-        height: 20rem;
+        height: 30rem;
         overflow: hidden;
         width: 100%;
     }

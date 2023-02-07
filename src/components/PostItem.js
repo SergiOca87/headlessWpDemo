@@ -62,18 +62,19 @@ const StyledPostItem = styled.div`
 `
 
 function PostItem({ post }) {
-    console.log('the post', post)
+    const postItem = post.post;
     return (
         <StyledPostItem>
             <div className="image-wrap">
-                <GatsbyImage image={post.node.featuredImage.node.localFile
-                    .childImageSharp.gatsbyImageData} alt={post.node.title} />
+                <GatsbyImage image={postItem.node.featuredImage.node.localFile
+                    .childImageSharp.gatsbyImageData} alt={postItem.node.title} />
             </div>
             <div className="post-details">
-                <h3>{post.node.title}</h3>
+                <h3>{postItem.node.title}</h3>
                 <Link to="/">Read More</Link>
             </div>
         </StyledPostItem>
+
     )
 }
 

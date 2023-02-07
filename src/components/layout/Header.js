@@ -4,8 +4,6 @@ import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
-
-
 const StyledNav = styled.nav`
     padding: 2rem 0;
     display: flex;
