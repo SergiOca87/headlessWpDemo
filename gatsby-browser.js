@@ -1,9 +1,12 @@
 import React from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { PropertiesProvider } from './src/context/PropertiesContext';
 
-export const wrapPageElement = ({ element, props }) => {
-    return <ParallaxProvider>{element}</ParallaxProvider>;
-};
+export const wrapRootElement = ({ element }) => (
+    <PropertiesProvider>
+        <ParallaxProvider>{element}</ParallaxProvider>
+    </PropertiesProvider>
+);
 
 export const onServiceWorkerUpdateReady = () => {
     const answer = window.confirm(

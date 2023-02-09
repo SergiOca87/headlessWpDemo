@@ -153,6 +153,12 @@ const IndexPage = ({ data }) => {
 
 				<Section title={homepage.propertiesTitle} text={homepage.propertiesText} centered={true} background={'#f5f5f5'}>
 					<PropertiesSlider collection={homepage.featuredProperties} />
+
+					<div className="mt-5 text-center">
+						<Link to="/properties" >
+							<Button variant="full-primary">All Properties</Button>
+						</Link>
+					</div>
 				</Section>
 
 				<Section background={'var(--tertiary)'}>
@@ -185,9 +191,12 @@ const IndexPage = ({ data }) => {
 
 											<p>{homepage.propertiesText}</p>
 										</div>
-										<Link to="/properties" >
-											<Button>Learn More</Button>
-										</Link>
+
+										<div className="mt-5">
+											<Link to="/properties" >
+												<Button variant="transparent">All Properties</Button>
+											</Link>
+										</div>
 									</div>
 								</StyledOverviewTextWrap>
 							</Col>
@@ -216,9 +225,13 @@ const IndexPage = ({ data }) => {
 								<div className="content">
 									<SecondaryTitle title={homepage.teamTitle} color={'#fff'} />
 									<p>{homepage.teamText}</p>
-									<Link to="/team" >
-										<Button>Meet The Team</Button>
-									</Link>
+
+
+									<div className="mt-5">
+										<Link to="/team" >
+											<Button variant="transparent">Meet The Team</Button>
+										</Link>
+									</div>
 								</div>
 							</Row>
 						</Container>

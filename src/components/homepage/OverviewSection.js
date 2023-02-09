@@ -104,9 +104,7 @@ function OverviewSection({ title, text }) {
                                 <SecondaryTitle title={title} />
                                 <p>{text}</p>
                             </div>
-                            <Link to="/about" >
-                                <Button>About Us</Button>
-                            </Link>
+
                         </div>
                     </Col>
                     <Col lg={6}>
@@ -132,7 +130,6 @@ function OverviewSection({ title, text }) {
                                 </div>
                             </Parallax>
                         </StyledOverviewIcons>
-
                     </Col>
                 </Row>
             </Container>

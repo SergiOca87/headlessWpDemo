@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import "normalize.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./Header";
+import PropertiesContext from '../../context/PropertiesContext';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -52,6 +53,58 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         transition: color 300ms;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        padding: 1.5rem 2.5rem;
+        font-size: 1.5rem;
+        border-radius: 0;
+        letter-spacing: .5px;
+
+        &-transparent {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        
+            &:hover {
+            background-color: #fff;
+            color: var(--primary);
+            }
+        }
+        &-full-transparent {
+            background-color: transparent;
+            border: 1px solid transparent;
+        
+            &:hover, &.active {
+            border: 1px solid var(--primary);
+            }
+        }
+        &-transparent-primary {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--text);
+        
+            &:hover {
+            background-color: var(--primary);
+            color: #fff;
+            }
+        }
+
+        &-full-primary {
+            background-color: var(--primary);
+            border: 1px solid var(--primary);
+            color: #fff;
+
+            &:hover {
+                border: 1px solid var(--primary);
+                background-color: transparent;
+            }
+        }
+    
+        &-sm {
+            padding: 1rem 2.5rem;
+        }
     }
 
     .container {
