@@ -24,6 +24,7 @@ import { IoGridOutline, IoMapOutline } from 'react-icons/io5';
 import { FaTimes } from 'react-icons/fa';
 import PropertiesContext from '../context/PropertiesContext';
 import Layout from '../components/layout/Layout';
+import PageHero from '../components/PageHero';
 
 const StyledHeader = styled.div`
 	height: 100px;
@@ -56,6 +57,8 @@ const StyledFilters = styled.div`
 	padding: 40px 0;
 	display: flex;
 	width: 100%;
+    margin: 0 auto;
+    max-width: 130rem; margin: 0 auto;
 `;
 
 const StyledFooter = styled.div`
@@ -65,6 +68,7 @@ const StyledFooter = styled.div`
 `;
 
 const Properties = ({ data }) => {
+    const propertiesPage = data.allWpPage.edges[0].node;
     //Map and List States
     const [childClicked, setChildClicked] = useState(null);
 
@@ -156,6 +160,7 @@ const Properties = ({ data }) => {
     return (
         <>
             <Layout>
+                <PageHero image={propertiesPage.featuredImage.node.localFile.childImageSharp.gatsbyImageData} title={propertiesPage.properties.pageTitle} text={propertiesPage.properties.pageSubtitle} />
                 <main>
                     <Container fluid>
                         <Tab.Container
@@ -256,6 +261,7 @@ const Properties = ({ data }) => {
                                                     ? 'Property found'
                                                     : 'properties found'}{' '}
                                             </h2>
+
                                             <Row>
                                                 {filteredProperties?.map(
                                                     (property) => {
@@ -271,6 +277,7 @@ const Properties = ({ data }) => {
                                                     }
                                                 )}
                                             </Row>
+
                                         </Container>
                                     </Tab.Pane>
                                     <Tab.Pane eventKey="map">
@@ -335,6 +342,27 @@ const Properties = ({ data }) => {
 
 export const indexQuery = graphql`
 	{
+        allWpPage(filter: {slug: {eq: "properties-2"}}) {
+            edges {
+                node {
+                    properties {
+                        pageTitle
+                        pageSubtitle
+                    }
+                    featuredImage {
+                        node {
+                            localFile {
+                                childImageSharp {
+                                    gatsbyImageData(
+                                        layout: FULL_WIDTH, 
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }       
+            }
+        }
 		allWpProperty {
 			edges {
 				node {

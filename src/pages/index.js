@@ -98,7 +98,7 @@ const StyledTeamSection = styled.div`
 		min-height: 40rem;
 		height: 100%;
 		position: relative;
-		padding: 4rem 0;
+		padding: 8rem 0;
 
 		&:before {
 			content: "";
@@ -141,9 +141,15 @@ const IndexPage = ({ data }) => {
 						.childImageSharp.gatsbyImageData} alt={homepage.introTitle} loading={'eager'} />
 					<Container>
 						<Row>
-							<div className="content">
-								<h1>{homepage.introTitle}</h1>
-								<p>{homepage.introText}</p>
+							<div
+								data-sal="slide-right"
+								data-sal-delay="300"
+								data-sal-duration="800"
+							>
+								<div className="content">
+									<h1>{homepage.introTitle}</h1>
+									<p>{homepage.introText}</p>
+								</div>
 							</div>
 						</Row>
 					</Container>
@@ -160,6 +166,7 @@ const IndexPage = ({ data }) => {
 						</Link>
 					</div>
 				</Section>
+
 
 				<Section background={'var(--tertiary)'}>
 					<Container>
@@ -222,15 +229,21 @@ const IndexPage = ({ data }) => {
 							.childImageSharp.gatsbyImageData} alt={homepage.introTitle} loading={'eager'} />
 						<Container>
 							<Row>
-								<div className="content">
-									<SecondaryTitle title={homepage.teamTitle} color={'#fff'} />
-									<p>{homepage.teamText}</p>
+								<div
+									data-sal="slide-right"
+									data-sal-duration="600"
+									data-sal-delay="300"
+								>
+									<div className="content">
+										<SecondaryTitle title={homepage.teamTitle} color={'#fff'} />
+										<p>{homepage.teamText}</p>
 
 
-									<div className="mt-5">
-										<Link to="/team" >
-											<Button variant="transparent">Meet The Team</Button>
-										</Link>
+										<div className="mt-5">
+											<Link to="/team" >
+												<Button variant="transparent">Meet The Team</Button>
+											</Link>
+										</div>
 									</div>
 								</div>
 							</Row>

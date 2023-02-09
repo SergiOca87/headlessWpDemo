@@ -38,8 +38,19 @@ function Section({ title, text, children, background = false, centered = false }
         `} >
             <Container>
                 <div className={`titles-wrap ${centered && 'text-center'}`}>
-                    {title && <SecondaryTitle title={title} />}
-                    {text && <p>{text}</p>}
+                    <div
+                        data-sal="slide-right"
+                        data-sal-duration="600"
+                    >
+                        {title && <SecondaryTitle title={title} />}
+                    </div>
+                    <div
+                        data-sal="slide-right"
+                        data-sal-duration="600"
+                        data-sal-delay="300"
+                    >
+                        {text && <p>{text}</p>}
+                    </div>
                 </div>
                 {children}
             </Container>

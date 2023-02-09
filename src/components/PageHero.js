@@ -59,20 +59,26 @@ const StyledHero = styled.section`
 
 
 function PageHero({ image, title, text }) {
-    return (
-        <StyledHero>
-            <GatsbyImage image={image} alt={title} loading={'eager'} />
+	return (
+		<StyledHero>
+			<GatsbyImage image={image} alt={title} loading={'eager'} />
 
-            <Container>
-                <Row>
-                    <div className="content">
-                        <SecondaryTitle title={title} color={'#fff'} />
-                        <p>{text}</p>
-                    </div>
-                </Row>
-            </Container>
-        </StyledHero>
-    )
+			<Container>
+				<Row>
+					<div
+						data-sal="slide-right"
+						data-sal-duration="600"
+						data-sal-delay="300"
+					>
+						<div className="content">
+							<SecondaryTitle title={title} color={'#fff'} />
+							<p>{text}</p>
+						</div>
+					</div>
+				</Row>
+			</Container>
+		</StyledHero>
+	)
 }
 
 export default PageHero

@@ -76,9 +76,8 @@ function Header({ homepage = false }) {
                         </Link>
                     </div>
                     <div className="links-wrap">
-                        <Link to={'about'} activeStyle={{ color: "var(--primary)" }}>About</Link>
-                        <Link to={'team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
-                        <Link to={'properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
+                        <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
+                        <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
                     </div>
                 </StyledHomepageNav>
                 :
@@ -95,9 +94,8 @@ function Header({ homepage = false }) {
                         </Link>
                     </div>
                     <div className="links-wrap">
-                        <Link to={'about'} activeStyle={{ color: "var(--primary)" }}>About</Link>
-                        <Link to={'team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
-                        <Link to={'properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
+                        <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
+                        <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
                     </div>
                 </StyledNav>}
         </Container>

@@ -79,7 +79,7 @@ const StyledOverviewIcons = styled.div`
 `;
 
 const StyledOverviewSection = styled.div`
-    padding: 6rem 0;
+    padding: 8rem 0;
     min-height: 50rem;
 
     .content-wrap {

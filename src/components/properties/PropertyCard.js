@@ -13,6 +13,7 @@ export default function PropertyCard({ property }) {
 		<Card
 			css={css`
 				overflow: hidden;
+				margin-bottom: 1.5rem;
 
 				img {
 					transition: all 1s;

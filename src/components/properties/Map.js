@@ -5,7 +5,7 @@ import PropertiesContext from '../../context/PropertiesContext';
 import MapStyles from './MapStyles';
 
 export default function Map({ properties, childClicked, setChildClicked }) {
-	const coordinates = { lat: 35.850033, lng: -94.6500523 };
+	const coordinates = { lat: 40.000000, lng: -74.0000000 };
 
 	const [coords, setCoords] = useState({});
 	const [bounds, setBounds] = useState(null);
@@ -30,7 +30,7 @@ export default function Map({ properties, childClicked, setChildClicked }) {
 				}}
 				defaultCenter={coordinates}
 				center={coordinates}
-				defaultZoom={4}
+				defaultZoom={9}
 				margin={[50, 50, 50, 50]}
 				options={{
 					disableDefaultUI: true,
