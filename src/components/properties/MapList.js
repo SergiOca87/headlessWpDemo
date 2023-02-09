@@ -20,7 +20,7 @@ const StyledMapList = styled.div`
 
 	&::-webkit-scrollbar-thumb {
 		border-radius: 15px;
-		background: #a3c7d1;
+		background: var(--primary);
 	}
 `;
 

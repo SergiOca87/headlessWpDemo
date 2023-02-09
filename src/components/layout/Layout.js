@@ -101,6 +101,21 @@ const GlobalStyle = createGlobalStyle`
                 background-color: transparent;
             }
         }
+
+        &-small {
+            padding: 1rem 2rem;
+            font-size: 1.3rem;
+        }
+
+        &-outline-primary {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+
+            &:hover {
+                background-color: var(--primary);
+                color: #fff;
+                }
+        }
     
         &-sm {
             padding: 1rem 2.5rem;

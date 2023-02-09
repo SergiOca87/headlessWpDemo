@@ -51,6 +51,7 @@ const StyledForm = styled(Form)`
 		max-width: 250px;
 		width: 100%;
 	}
+
 `;
 
 const StyledFilters = styled.div`
@@ -59,6 +60,16 @@ const StyledFilters = styled.div`
 	width: 100%;
     margin: 0 auto;
     max-width: 130rem; margin: 0 auto;
+
+    
+    a {
+        font-size: 1.8rem;
+    }
+
+    select {
+        height: 3.9rem;
+        font-size: 1.6rem;
+    }
 `;
 
 const StyledFooter = styled.div`

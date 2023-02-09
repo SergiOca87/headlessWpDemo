@@ -8,6 +8,7 @@ const StyledCard = styled(Card)`
 	display: flex;
 	overflow: hidden;
 	flex-direction: row !important;
+	height: 16.8rem;
 
 	.gatsby-image-wrapper {
 		max-width: 250px;
@@ -15,8 +16,20 @@ const StyledCard = styled(Card)`
 
 	&.isSelected {
 		.card-body {
-			background-color: #a3c7d1;
+			background-color: #f5f5f5;
+
+
 		}
+	}
+
+	.h5 {
+		font-size: 1.6rem;
+		text-transform: uppercase;
+		margin-bottom: 2rem;
+	}
+
+	.h6 {
+		font-size: 1.4rem;
 	}
 `;
 
@@ -62,8 +75,7 @@ export default function SmallPropertyCard({ property, selected, index }) {
 							);
 						})}
 
-					<Card.Text>Text Placeholder</Card.Text>
-					<Button variant="outline-secondary" size="sm">
+					<Button variant="outline-primary btn-small mt-3">
 						View Details
 					</Button>
 				</Card.Body>
