@@ -12,19 +12,15 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
-    .links-wrap {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
 
     a {
         text-decoration: none;
         color: #000;
         text-transform: uppercase;
         font-size: 1.6rem;
-    
+        margin-left: 2rem;
 
         &:hover {
             color: var(--primary);
@@ -65,62 +61,65 @@ function Header({ homepage = false }) {
 
     return (
         <Navbar key={'md'} bg="light" expand={'md'}>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-            <Container>
-                {homepage ?
-                    <StyledHomepageNav>
-                        <div>
-                            <Link to={'/'}>
-                                <StaticImage
-                                    src="../../assets/images/logo.svg"
-                                    alt=""
-                                    loading="eager"
-                                    layout="fixed"
-                                    placeholder="none"
-                                />
-                            </Link>
-                        </div>
-                        <div className="links-wrap">
-                            <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
-                            <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
-                        </div>
-                    </StyledHomepageNav>
-                    :
-                    <StyledNav>
-                        <div>
-                            <Link to={'/'}>
-                                <StaticImage
-                                    src="../../assets/images/logo.svg"
-                                    alt=""
-                                    loading="eager"
-                                    layout="fixed"
-                                    placeholder="none"
-                                />
-                            </Link>
-                        </div>
-                        <div className="links-wrap">
-                            <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
-                            <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
-                        </div>
-                    </StyledNav>}
 
-                <Navbar.Offcanvas
-                    id={`offcanvasNavbar-expand-md`}
-                    aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-                    placement="end"
-                >
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                            Offcanvas
-                        </Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
-                            <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
-                        </Nav>
-                    </Offcanvas.Body>
-                </Navbar.Offcanvas>
+            <Container>
+                <div className="d-flex justify-content-between align-items-center w-100">
+                    {homepage ?
+                        <StyledHomepageNav>
+                            <div>
+                                <Link to={'/'}>
+                                    <StaticImage
+                                        src="../../assets/images/logo.svg"
+                                        alt=""
+                                        loading="eager"
+                                        layout="fixed"
+                                        placeholder="none"
+                                    />
+                                </Link>
+                            </div>
+                            <div className="links-wrap d-none d-md-block">
+                                <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
+                                <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
+                            </div>
+                        </StyledHomepageNav>
+                        :
+                        <StyledNav>
+
+                            <Link to={'/'}>
+                                <StaticImage
+                                    src="../../assets/images/logo.svg"
+                                    alt=""
+                                    loading="eager"
+                                    layout="fixed"
+                                    placeholder="none"
+                                />
+                            </Link>
+
+                            <div className="links-wrap d-none d-md-block">
+                                <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
+                                <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
+                            </div>
+                        </StyledNav>}
+
+                    <Navbar.Offcanvas
+                        id={'offcanvasNavbar-expand-md'}
+                        aria-labelledby={'offcanvasNavbarLabel-expand-md'}
+                        placement="end"
+                        className="d-md-none"
+                    >
+                        <Offcanvas.Header closeButton>
+
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                                <Link to={'/team'} activeStyle={{ color: "var(--primary)" }}>Team</Link>
+                                <Link to={'/properties'} activeStyle={{ color: "var(--primary)" }}>Properties</Link>
+                            </Nav>
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+
+                    <Navbar.Toggle aria-controls={'offcanvasNavbar-expand-md'} />
+                </div>
             </Container>
         </Navbar>
     )

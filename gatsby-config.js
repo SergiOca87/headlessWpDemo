@@ -88,6 +88,16 @@ module.exports = {
     // },
     "gatsby-transformer-sharp",
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Headless Wordpress Demo`,
+        short_name: `Headless Wordpress Demo`,
+        start_url: `/`,
+        icon: `src/assets/images/icon.png`,
+      },
+    },
+    "gatsby-plugin-offline",
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",

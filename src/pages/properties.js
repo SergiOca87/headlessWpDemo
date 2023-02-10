@@ -25,6 +25,7 @@ import { FaTimes } from 'react-icons/fa';
 import PropertiesContext from '../context/PropertiesContext';
 import Layout from '../components/layout/Layout';
 import PageHero from '../components/PageHero';
+import Seo from 'gatsby-plugin-wpgraphql-seo';
 
 const StyledHeader = styled.div`
 	height: 100px;
@@ -36,6 +37,17 @@ const StyledHeader = styled.div`
 		align-items: center;
 		justify-content: flex-end;
 	}
+`;
+
+const StyledSecondaryHeader = styled.h2`
+  font-weight: 600;
+  margin-top: 2rem;
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  color: var(--tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
 `;
 
 const StyledForm = styled(Form)`
@@ -62,9 +74,17 @@ const StyledFilters = styled.div`
     max-width: 130rem; margin: 0 auto;
 
     
-    a {
-        font-size: 1.8rem;
-    }
+    .nav-link {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--primary);
+
+        &.active {
+            color: red;
+            background-color: var(--primary) !important;
+            color: #fff !important;
+        }
 
     select {
         height: 3.9rem;
@@ -104,6 +124,7 @@ const Properties = ({ data }) => {
         useContext(PropertiesContext);
 
     //When offering or type changes, filter properties
+    //TODO: This is not a proper use of useEffect, could it just be a regular function?
     useEffect(() => {
         let results = [];
 
@@ -171,6 +192,7 @@ const Properties = ({ data }) => {
     return (
         <>
             <Layout>
+                <Seo post={data.allWpPage.edges[0].node} />
                 <PageHero image={propertiesPage.featuredImage.node.localFile.childImageSharp.gatsbyImageData} title={propertiesPage.properties.pageTitle} text={propertiesPage.properties.pageSubtitle} />
                 <main>
                     <Container fluid>
@@ -240,7 +262,7 @@ const Properties = ({ data }) => {
 
                                     {activeFilters !== false ? (
                                         <Button
-                                            variant="outline-secondary"
+                                            variant="outline-secondary btn-small"
                                             onClick={() => resetFilters()}
                                         >
                                             <FaTimes /> Reset Filters
@@ -266,12 +288,12 @@ const Properties = ({ data }) => {
 											min-height: 500px;
 										`}
                                         >
-                                            <h2 className="mb-5 mt-3 text-center">
+                                            <StyledSecondaryHeader className="mb-5 mt-3 text-center">
                                                 {filteredProperties?.length}{' '}
                                                 {filteredProperties?.length === 1
                                                     ? 'Property found'
                                                     : 'properties found'}{' '}
-                                            </h2>
+                                            </StyledSecondaryHeader>
 
                                             <Row>
                                                 {filteredProperties?.map(
@@ -369,6 +391,35 @@ export const indexQuery = graphql`
                                     )
                                 }
                             }
+                        }
+                    }
+                    seo {
+                        title
+                        metaDesc
+                        focuskw
+                        metaKeywords
+                        metaRobotsNoindex
+                        metaRobotsNofollow
+                        opengraphTitle
+                        opengraphDescription
+                        opengraphImage {
+                            altText
+                            sourceUrl
+                            srcSet
+                        }
+                        twitterTitle
+                        twitterDescription
+                        twitterImage {
+                            altText
+                            sourceUrl
+                            srcSet
+                        }
+                        canonical
+                        cornerstone
+                        schema {
+                            articleType
+                            pageType
+                            raw
                         }
                     }
                 }       

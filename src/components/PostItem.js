@@ -73,7 +73,7 @@ function PostItem({ post }) {
             </div>
             <div className="post-details">
                 <h3>{postItem.node.title}</h3>
-                <Link to="/">Read More</Link>
+                {/* <Link to="/">Read More</Link> */}
             </div>
         </StyledPostItem>
 

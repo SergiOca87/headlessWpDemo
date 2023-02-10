@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import Seo from 'gatsby-plugin-wpgraphql-seo';
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Layout from '../components/layout/Layout';
@@ -14,6 +15,7 @@ const Team = ({ data }) => {
     return (
         <>
             <Layout>
+                <Seo post={data.allWpPage.edges[0].node} />
                 <PageHero image={data.allWpPage.edges[0].node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} title={team.pageTitle} text={team.pageSubtitle} />
 
                 <Section>
@@ -53,6 +55,35 @@ export const teamQuery = graphql`
                 team {
                     pageTitle
                     pageSubtitle
+                }
+                seo {
+                    title
+                    metaDesc
+                    focuskw
+                    metaKeywords
+                    metaRobotsNoindex
+                    metaRobotsNofollow
+                    opengraphTitle
+                    opengraphDescription
+                    opengraphImage {
+                        altText
+                        sourceUrl
+                        srcSet
+                    }
+                    twitterTitle
+                    twitterDescription
+                    twitterImage {
+                        altText
+                        sourceUrl
+                        srcSet
+                    }
+                    canonical
+                    cornerstone
+                    schema {
+                        articleType
+                        pageType
+                        raw
+                    }
                 }
             }
         }

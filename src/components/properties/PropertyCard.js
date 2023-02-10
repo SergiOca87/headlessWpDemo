@@ -45,6 +45,7 @@ const StyledPropertyCard = styled(Card)`
 		font-size: 2rem;
 		text-transform: uppercase;
 		margin-bottom: 2rem;
+		font-weight: 600;
 	}
 
 	.h6 {
@@ -91,7 +92,7 @@ export default function PropertyCard({ property }) {
 								</Card.Subtitle>
 							);
 						})}
-					<Button variant="outline-primary btn-small mt-4">View Details</Button>
+					{/* <Button variant="outline-primary btn-small mt-4">View Details</Button> */}
 				</Card.Body>
 			</StyledPropertyCard>
 		</>

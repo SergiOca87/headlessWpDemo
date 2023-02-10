@@ -34,8 +34,6 @@ export default function MapMarker({ property, index }) {
 
 	return (
 		<StyledMapMarker
-			// TODO: This key NEEDS to be the i
-
 			onMouseOver={() => handleMouseOver(index)}
 			className={selectedProperty === index ? 'isSelected' : ''}
 		>

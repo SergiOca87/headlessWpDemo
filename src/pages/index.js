@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import { Link, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Parallax } from "react-scroll-parallax";
+import Seo from 'gatsby-plugin-wpgraphql-seo';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -135,6 +136,7 @@ const IndexPage = ({ data }) => {
 
 	return (
 		<Layout homepage={true}>
+			<Seo post={data.allWpPage.edges[0].node} />
 			<main>
 				<StyledHero>
 					<GatsbyImage image={homepage.introImage.localFile
@@ -166,7 +168,6 @@ const IndexPage = ({ data }) => {
 						</Link>
 					</div>
 				</Section>
-
 
 				<Section background={'var(--tertiary)'}>
 					<Container>
@@ -352,6 +353,35 @@ export const indexQuery = graphql`
             }
           }
         }
+		seo {
+			title
+			metaDesc
+			focuskw
+			metaKeywords
+			metaRobotsNoindex
+			metaRobotsNofollow
+			opengraphTitle
+			opengraphDescription
+			opengraphImage {
+				altText
+				sourceUrl
+				srcSet
+			}
+			twitterTitle
+			twitterDescription
+			twitterImage {
+				altText
+				sourceUrl
+				srcSet
+			}
+			canonical
+			cornerstone
+			schema {
+				articleType
+				pageType
+				raw
+			}
+		}
       }
     }
   }

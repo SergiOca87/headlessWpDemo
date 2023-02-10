@@ -26,6 +26,7 @@ const StyledCard = styled(Card)`
 		font-size: 1.6rem;
 		text-transform: uppercase;
 		margin-bottom: 2rem;
+		font-weight: 600;
 	}
 
 	.h6 {
@@ -75,9 +76,9 @@ export default function SmallPropertyCard({ property, selected, index }) {
 							);
 						})}
 
-					<Button variant="outline-primary btn-small mt-3">
+					{/* <Button variant="outline-primary btn-small mt-3">
 						View Details
-					</Button>
+					</Button> */}
 				</Card.Body>
 			</StyledCard>
 		</div>
