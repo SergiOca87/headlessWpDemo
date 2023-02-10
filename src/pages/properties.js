@@ -64,6 +64,10 @@ const StyledForm = styled(Form)`
 		width: 100%;
 	}
 
+    select {
+        height: 3.9rem;
+        font-size: 1.6rem;
+    }
 `;
 
 const StyledFilters = styled.div`
@@ -73,7 +77,6 @@ const StyledFilters = styled.div`
     margin: 0 auto;
     max-width: 130rem; margin: 0 auto;
 
-    
     .nav-link {
         font-size: 1.6rem;
         text-transform: uppercase;
