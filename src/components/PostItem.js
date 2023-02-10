@@ -45,6 +45,10 @@ const StyledPostItem = styled.div`
 
         h3 {
             margin-bottom: 3rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 600;
         }
 
       

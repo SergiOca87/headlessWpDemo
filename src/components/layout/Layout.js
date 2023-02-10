@@ -125,6 +125,21 @@ const GlobalStyle = createGlobalStyle`
     .container {
         position: relative;
     }
+
+    .offcanvas-body {
+        background-color: var(--primary);
+        padding-top: 5rem !important;
+ 
+        a {
+            text-transform: uppercase;
+            padding: .5rem 2.5rem;
+            font-size: 1.5rem;
+            border-radius: 0;
+            letter-spacing: .5px;
+            color: #fff;
+            text-decoration: none;
+        }
+     }
   
 `
 export default function Layout({ children, homepage = false }) {
